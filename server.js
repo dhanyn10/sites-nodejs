@@ -20,8 +20,19 @@ app.get('/json', (req, res)=> {
     });
 });
 
+app.get('/home', (req, res) => {
+    res.render('about.hbs', {
+        pageTitle: "Home Page",
+        welcomeMessage: "Hello from Home",
+        currentYear: new Date().getFullYear()
+    })
+});
+
 app.get('/about', (req, res)=> { 
-    res.render('about.hbs');
+    res.render('about.hbs', {
+        pageTitle: "About this page",
+        currentYear: new Date().getFullYear()
+    });
 });
 
 app.listen(3000, () => {
