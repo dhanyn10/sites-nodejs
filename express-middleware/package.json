@@ -1,0 +1,21 @@
+{
+  "name": "sites-nodejs",
+  "version": "1.0.0",
+  "description": "build websites with nodejs by udemy",
+  "main": "index.js",
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "websites"
+  ],
+  "author": "Dhany Nurdiansyah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dhanyn10/sites-nodejs/issues"
+  },
+  "homepage": "https://github.com/dhanyn10/sites-nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "hbs": "^4.0.1"
+  }
+}
