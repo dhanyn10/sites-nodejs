@@ -5,10 +5,8 @@
         <title>{{pageTitle}}</title>
     </head>
     <body>
-        <h2>{{pageTitle}}</h2>
-        <p>{{welcomeMessage}}</p>
-        <footer>
-            <p>copyright &copy; {{currentYear}}</p>
-        </footer>
+        {{>header}}
+        <p>{{upperit welcomeMessage}}</p>
+        {{>footer}}
     </body>
 </html>

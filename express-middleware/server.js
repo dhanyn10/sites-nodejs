@@ -5,6 +5,18 @@ var app = express();
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+
+hbs.registerPartials(__dirname + "/views/partials")
+app.set('view engine', 'hbs');
+
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+});
+
+hbs.registerHelper('upperit', (teks) => {
+    return teks.toUpperCase();
+});
+
 app.use( (req, res, next)=> {
     var sekarang = new Date().toString();
     
@@ -12,7 +24,7 @@ app.use( (req, res, next)=> {
     next();
 });
 app.get('/', (req, res) => {
-    res.render('about.hbs', {
+    res.render('home.hbs', {
         pageTitle: "Home Page",
         welcomeMessage: "Hello from Home",
         currentYear: new Date().getFullYear()
