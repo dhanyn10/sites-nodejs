@@ -1,5 +1,6 @@
 const express   = require('express');
 const hbs       = require('hbs');
+const fs        = require('fs')
 
 var app = express();
 app.set('view engine', 'hbs');
@@ -18,9 +19,15 @@ hbs.registerHelper('upperit', (teks) => {
 });
 
 app.use( (req, res, next)=> {
-    var sekarang = new Date().toString();
-    
-    console.log(`${sekarang}: ${req.method} | ${req.url}`)
+    var sekarang    = new Date().toString();
+    var log         = `${sekarang}: ${req.method} | ${req.url}`;
+    console.log(log);
+    fs.appendFile('server.log', log + '\n', (err) => {
+        if(err)
+        {
+            console.log('unable to append server.log');
+        }
+    });
     next();
 });
 app.get('/', (req, res) => {
