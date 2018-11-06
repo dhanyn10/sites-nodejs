@@ -4,8 +4,6 @@ const fs        = require('fs')
 
 var app = express();
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
-
 
 hbs.registerPartials(__dirname + "/views/partials")
 app.set('view engine', 'hbs');
@@ -30,6 +28,25 @@ app.use( (req, res, next)=> {
     });
     next();
 });
+
+/**
+ * when maintenance is used, any page after the maintenance.hbs
+ * will not displayed. such as any page in the public folder
+ * and also in views folder.
+ * 
+ * We can deactivated maintenance mode by removing or disabling
+ * this maintenance.hbs page.
+ */
+app.use((req, res, next) => {
+    res.render('maintenance.hbs');
+});
+
+/**
+ * this page is moved from above maintenance.hbs. so maintenance.hbs
+ * will displayed even user visit this static page
+ */
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: "Home Page",
